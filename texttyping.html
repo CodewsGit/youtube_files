@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Typing Animation</title>
+    <style>
+        body{
+            margin:0;
+            padding:0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color:#fff;
+            font-family: monospace;
+            background:#292e2e;
+            height:100vh;
+        }
+        .container{
+            font-size:34px;
+            font-weight:600;
+            min-width:280px;
+        }
+        .container span{
+            position:relative;
+        }
+        .container span::before{
+            content:'Developer';
+            color:orangered;
+            animation:dynamicwords 20s infinite;
+        }
+        @keyframes dynamicwords {
+            0%, 20%{
+                content:'Developer';
+            }
+            21%, 40%{
+                content:'Youtuber';
+            }
+            41%, 60%{
+                content:'Freelancer';
+            }
+            61%, 80%{
+                content:'Blogger';
+            }
+            81%, 100%{
+                content:'Rider';
+            }
+        }
+        .container span::after{
+            content:'';
+            position:absolute;
+            width:calc(100% + 8px);
+            height:100%;
+            background:#292e2e;
+            border-left:2px solid orange;
+            right:0;
+            animation:cursor 0.8s infinite, typing 20s steps(14) infinite;
+        }
+        @keyframes cursor {
+            to{
+                border-left:transparent;
+            }
+        }
+        @keyframes typing {
+            10%, 15%, 30%, 35%, 50%, 55%, 70%, 75%, 90%, 95%{
+                width:0;
+            }
+            5%, 20%,25%,40%,45%,60%,65%,80%,85%{
+                width:100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        I'm a <span></span>
+    </div>
+</body>
+</html>
